@@ -1,0 +1,55 @@
+prerequisite for the hadoop installation
+
+1) make sure that you must install java on your system
+2)download the hadoop binaries from the below link
+
+https://www.apache.org/dyn/closer.cgi/hadoop/common/hadoop-3.3.6/hadoop-3.3.6.tar.gz
+
+extract the above file
+#) set the environment variable path to the hadoop.
+#)  Configure Hadoop Core Site:
+Navigate to the conf folder inside the Hadoop directory and edit the core-site.xml file. Add the following configuration:
+<configuration>
+    <property>
+        <name>fs.defaultFS</name>
+        <value>hdfs://localhost:9000</value>
+    </property>
+</configuration>
+Configure Hadoop HDFS Site:
+
+Edit the hdfs-site.xml file in the same conf folder and add the following:
+
+<configuration>
+    <property>
+        <name>dfs.replication</name>
+        <value>1</value>
+    </property>
+    <property>
+        <name>dfs.namenode.name.dir</name>
+        <value>file:/path/to/hadoop/data/dfs/namenode</value>
+    </property>
+    <property>
+        <name>dfs.datanode.data.dir</name>
+        <value>file:/path/to/hadoop/data/dfs/datanode</value>
+    </property>
+</configuration>
+
+
+Format HDFS:
+
+Open a command prompt and navigate to the Hadoop bin directory. Run the following command to format the HDFS:
+hdfs namenode -format
+
+
+
+
+Start HDFS:
+
+Start the HDFS by running the following command:
+
+start-dfs.cmd
+
+
+Verify HDFS:
+
+Open your web browser and go to http://localhost:9870 to access the Hadoop NameNode web UI. You should see the HDFS overview page
